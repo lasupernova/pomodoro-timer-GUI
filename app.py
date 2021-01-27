@@ -11,11 +11,11 @@ except:
     pass
 
 # ----- Colors -----
-COL_PRIM = "#2e3f4f"
-COL_SEC = "#293846"
+COL_PRIM = "#585278"
+COL_SEC = "#6f6898"
 COL_LIGHT_BG = "#fff"
 COL_LIGHT_TXT = "#eee"
-COL_DARK_TXT = "#8095a8"
+COL_DARK_TXT = "#311a80"
 
 # ----- create widget class ------
 class PomodoroTimer(tk.Tk): #class inheriting from tk.Tk
