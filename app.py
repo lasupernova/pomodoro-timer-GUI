@@ -16,6 +16,7 @@ COL_SEC = "#6f6898"
 COL_LIGHT_BG = "#fff"
 COL_LIGHT_TXT = "#eee"
 COL_DARK_TXT = "#311a80"
+COL_HIGHLIGHT = "#e3007d"
 
 # ----- create widget class ------
 class PomodoroTimer(tk.Tk): #class inheriting from tk.Tk
@@ -33,7 +34,7 @@ class PomodoroTimer(tk.Tk): #class inheriting from tk.Tk
         style.configure("TimerText.TLabel", background=COL_LIGHT_BG, foreground=COL_DARK_TXT, font="Courier 38") #style 4
         style.configure("LightText.TLabel", background=COL_PRIM, foreground=COL_LIGHT_TXT) #style 5
         style.configure("PomodoroButton.TButton", background=COL_SEC, foreground=COL_LIGHT_TXT) #style 6
-        # style.configure("PomodoroButton.TButton", background=[("active", COL_PRIM), ("disabled",COL_LIGHT_TXT)]) #style 7
+        style.map("PomodoroButton.TButton", background=[("active", COL_PRIM), ("disabled",COL_LIGHT_TXT)], bordercolor=[("active", COL_HIGHLIGHT)], borderwidth=[("active", 3)]) #style 7
  
         # set general widget background color
         self["background"] = COL_PRIM
