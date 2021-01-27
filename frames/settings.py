@@ -7,10 +7,14 @@ class Settings(ttk.Frame):
     def __init__(self, parent, controller, show_timer):
         super().__init__(parent)
 
+        #  ----- Aestetics -----
+        self['style'] = "Background.TFrame"
+
         # create container and define location in Settings-widget
         settings_container = ttk.Frame(
             self,
-            padding="30 15 30 15"
+            padding="30 15 30 15",
+            style="Background.TFrame"
         )
 
         settings_container.grid(row=0, column=0, sticky="EW", padx=10, pady=10)
@@ -23,21 +27,24 @@ class Settings(ttk.Frame):
         # pomodoro label
         pomodoro_label = ttk.Label(
             settings_container,
-            text = "Pomodoro"
+            text = "Pomodoro",
+            style="LightText.TLabel"
         )
         pomodoro_label.grid(row=0, column=0, sticky="W")
 
         # short break label
         short_break_label = ttk.Label(
             settings_container,
-            text = "Short Break"
+            text = "Short Break",
+            style="LightText.TLabel"
         )
         short_break_label.grid(row=1, column=0, sticky="W")
 
         # long break label
         long_break_label = ttk.Label(
             settings_container,
-            text = "Long Break"
+            text = "Long Break",
+            style="LightText.TLabel"
         )
         long_break_label.grid(row=2, column=0, sticky="W")
 
@@ -82,15 +89,21 @@ class Settings(ttk.Frame):
         long_break_input.grid(row=2, column=1, sticky="EW") 
         long_break_input.focus()
 
-        # ----- Button ------
+        # ----- button container -----
+        button_container = ttk.Frame(self, style="Background.TFrame")
+        button_container.grid(sticky="EW", padx=10)
+        button_container.columnconfigure(0, weight=1)
+
+                # ----- Button ------
         # add timer button, that toggles to timer frame
         timer_button = ttk.Button(
-            self,
-            text = "Timer",
+            button_container,
+            text = "⟵ back to Timer",
             command = show_timer,
-            cursor="hand2"
+            cursor="hand2",
+            style="PomodoroButton.TButton"
         )
-        timer_button.grid(row=0, column=2, sticky="E", padx=10, pady=(10,0))
+        timer_button.grid(row=0, column=0, sticky="EW", padx=2)
 
         # ----- aestetics -----
 
