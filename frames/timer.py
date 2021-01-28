@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from collections import deque
+import pygame 
 
 # ----- Windows only configuration -----
 try: #try-except, becasue this code will not run in MacOS or Linux
@@ -164,6 +165,7 @@ class Timer(ttk.Frame):
         elif self.timer_running and current_time == "00:00":
             self.controller.timer_schedule.rotate(-1) #rotate current timer_order item to the end; following item is now in first place
             next_up = self.controller.timer_schedule[0] #save new first-place item in next_up variable
+            self.play_sound() #play gong every time a time-section is up
 
             # set current_time depending on current setting
             if next_up =="pomodoro":
@@ -181,3 +183,9 @@ class Timer(ttk.Frame):
 
             # re-run function after 1000ms
             self._timer_decrement_jobs = self.after(100, self.decrement_timer)
+
+    # function playing sound from an mp3-file
+    def play_sound(self):
+        pygame.mixer.init()
+        pygame.mixer.music.load("media/Bell_Sound_Ring.mp3")
+        pygame.mixer.music.play(loops=0)

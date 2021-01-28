@@ -1,3 +1,6 @@
+#### TO DO: 1) git add/commit/push: sound functionality added; 2)adjust decrement speed to 100, 3) add more sounds + add sound selection to settings
+
+
 import tkinter as tk
 from tkinter import ttk
 from collections import deque
