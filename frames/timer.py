@@ -162,7 +162,7 @@ class Timer(ttk.Frame):
             self.current_time.set(f"{minutes:02d}:{seconds:02d}")
 
             # re-run function after 1000ms
-            self._timer_decrement_jobs = self.after(100, self.decrement_timer)
+            self._timer_decrement_jobs = self.after(1000, self.decrement_timer)
 
         elif self.timer_running and current_time == "00:00":
             self.controller.timer_schedule.rotate(-1) #rotate current timer_order item to the end; following item is now in first place
@@ -184,7 +184,7 @@ class Timer(ttk.Frame):
             self.timer_label.set(value=self.label_text[next_up])
 
             # re-run function after 1000ms
-            self._timer_decrement_jobs = self.after(100, self.decrement_timer)
+            self._timer_decrement_jobs = self.after(1000, self.decrement_timer)
 
     # ----- function playing sound from an mp3-file -----
     def play_sound(self):
