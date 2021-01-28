@@ -47,16 +47,18 @@ class PomodoroTimer(tk.Tk): #class inheriting from tk.Tk
         self.columnconfigure(0, weight=1) #center content of first row
         self.rowconfigure(1, weight=1) 
 
-        # create class variables
-        self.pomodoro = tk.StringVar(value=25)
-        self.short_break = tk.StringVar(value=5)
-        self.long_break = tk.StringVar(value=15)
-        self.sound = tk.StringVar(value="Gong")
-        self.timer_order = ["pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break"]
-        self.timer_schedule = deque(self.timer_order) #create deck to cycle through timer_order items
-        self.label_text = {"pomodoro":"Pomodoro, get to work!!!", "short_break":"Take a short break", "long_break":"Long break! Go grab some coffee :)"}
+        # ----- create class variables -----
+        self.pomodoro = tk.StringVar(value=25) #used in Settings frame
+        self.short_break = tk.StringVar(value=5) #used in Settings frame
+        self.long_break = tk.StringVar(value=15) #used in Settings frame
+        self.sound = tk.StringVar(value="Gong (default)") #used in Settings frame
+        self.timer_order = ["pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break"] #used in Timer frame
+        self.timer_schedule = deque(self.timer_order) #create deck to cycle through timer_order items #used in Timer frame
+        self.label_text = {"pomodoro":"Pomodoro, get to work!!!", "short_break":"Take a short break", "long_break":"Long break! Go grab some coffee :)"} #used in Timer frame
 
-        # save a ttk frame - object in a variable named "container"
+        #  ----- Frames ----- 
+
+        # save a ttk frame - object in a variable named "container" 
         container = ttk.Frame(self) 
         container.grid() #position the frame in the parent widget in a grid
         container.columnconfigure(0, weight=1)
@@ -64,11 +66,11 @@ class PomodoroTimer(tk.Tk): #class inheriting from tk.Tk
         # create dictionary to keep track of frames
         self.frames = dict()
 
-        # ----- add timer frame that is placed within "container"
+        # add timer frame that is placed within "container"
         self.timer_frame = Timer(container, self, lambda: self.show_frame(Settings)) #initiate Timer-class and pass self as the controller
         self.timer_frame.grid(row=0, column=0, sticky="NESW") #configure timer frame placed in the first row and first column and to fill the entire frame ("container")
 
-        # ----- add settings frame -----
+        # add settings frame 
         self.settings_frame = Settings(container, self, lambda: self.show_frame(Timer))
         self.settings_frame.grid(row=0, column=0, sticky="NESW") 
 

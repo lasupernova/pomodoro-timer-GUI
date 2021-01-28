@@ -104,7 +104,7 @@ class Settings(ttk.Frame):
             justify="center",
             textvariable=controller.sound,
             width=10,
-            values=['Gong','Rooster','Beer Can','Santa Claus','Party Horn','Service Bell','Spooky Water Drops']
+            values=['Gong (default)','Rooster','Beer Can','Santa Claus','Party Horn','Service Bell','Spooky Water Drops']
         )
         sound_input.grid(row=3, column=1, sticky="EW") 
         sound_input.focus()

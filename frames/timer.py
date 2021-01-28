@@ -189,7 +189,7 @@ class Timer(ttk.Frame):
     # ----- function playing sound from an mp3-file -----
     def play_sound(self):
         # dict to map selected sound option to file name
-        sounds = {'Gong':'Bell_Sound_Ring',
+        sounds = {'Gong (default)':'Bell_Sound_Ring',
                   'Rooster':'Rooster_Crowing-43612401',
                   'Beer Can':'Beer_Can_Opening_1428393126',
                   'Santa Claus':'Ho_Ho_Ho_1954250969',
