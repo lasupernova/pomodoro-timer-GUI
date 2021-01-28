@@ -48,6 +48,15 @@ class Settings(ttk.Frame):
         )
         long_break_label.grid(row=2, column=0, sticky="W")
 
+        # sound label
+        sound_label = ttk.Label(
+            settings_container,
+            text = "Notification Sound",
+            style="LightText.TLabel"
+        )
+        sound_label.grid(row=3, column=0, sticky="W")
+
+
         # ----- Spinboxes (Input) -----
 
         # pomodoro box
@@ -88,6 +97,17 @@ class Settings(ttk.Frame):
         )
         long_break_input.grid(row=2, column=1, sticky="EW") 
         long_break_input.focus()
+
+        # long break box
+        sound_input = ttk.Combobox(
+            settings_container,
+            justify="center",
+            textvariable=controller.sound,
+            width=10,
+            values=['Gong','Rooster','Beer Can','Santa Claus','Party Horn','Service Bell','Spooky Water Drops']
+        )
+        sound_input.grid(row=3, column=1, sticky="EW") 
+        sound_input.focus()
 
         # ----- button container -----
         button_container = ttk.Frame(self, style="Background.TFrame")

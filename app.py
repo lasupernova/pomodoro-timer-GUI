@@ -51,6 +51,7 @@ class PomodoroTimer(tk.Tk): #class inheriting from tk.Tk
         self.pomodoro = tk.StringVar(value=25)
         self.short_break = tk.StringVar(value=5)
         self.long_break = tk.StringVar(value=15)
+        self.sound = tk.StringVar(value="Gong")
         self.timer_order = ["pomodoro", "short_break", "pomodoro", "short_break", "pomodoro", "long_break"]
         self.timer_schedule = deque(self.timer_order) #create deck to cycle through timer_order items
         self.label_text = {"pomodoro":"Pomodoro, get to work!!!", "short_break":"Take a short break", "long_break":"Long break! Go grab some coffee :)"}

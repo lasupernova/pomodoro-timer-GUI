@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from collections import deque
 import pygame 
+import os
 
 # ----- Windows only configuration -----
 try: #try-except, becasue this code will not run in MacOS or Linux
@@ -27,6 +28,7 @@ class Timer(ttk.Frame):
         short_break_time = int(controller.short_break.get())
         long_break_time = int(controller.long_break.get())
         self.label_text = controller.label_text
+        self.sound = controller.sound
 
         # initiate class variables
         self.current_time = tk.StringVar(value= f"{pomodoro_time:02d}:00")
@@ -184,8 +186,24 @@ class Timer(ttk.Frame):
             # re-run function after 1000ms
             self._timer_decrement_jobs = self.after(100, self.decrement_timer)
 
-    # function playing sound from an mp3-file
+    # ----- function playing sound from an mp3-file -----
     def play_sound(self):
+        # dict to map selected sound option to file name
+        sounds = {'Gong':'Bell_Sound_Ring',
+                  'Rooster':'Rooster_Crowing-43612401',
+                  'Beer Can':'Beer_Can_Opening_1428393126',
+                  'Santa Claus':'Ho_Ho_Ho_1954250969',
+                  'Party Horn':'party_horn-Mike_Koenig-76599891',
+                  'Service Bell':'service-bell_daniel_simion',
+                  'Spooky Water Drops':'Spooky_Water_Drops_50164895'
+                  }
+        # get sound selected in Combobox 
+        selected = self.controller.sound.get()
+        # get mp3 file name associated with selected sound
+        mp3_file_name = sounds[selected]
+        # path to mp3 file to play
+        path = os.path.join(f"media",f"{mp3_file_name}.mp3")
+        # initialize pygame mixer and play selected sound
         pygame.mixer.init()
-        pygame.mixer.music.load("media/Bell_Sound_Ring.mp3")
+        pygame.mixer.music.load(f"{path}")
         pygame.mixer.music.play(loops=0)
