@@ -13,7 +13,7 @@ try: #try-except, becasue this code will not run in MacOS or Linux
 except:
     pass
 
-# ----- Colors -----
+# ----- Colors ----- 
 COL_PRIM = "#585278"
 COL_SEC = "#6f6898"
 COL_LIGHT_BG = "#fff"
